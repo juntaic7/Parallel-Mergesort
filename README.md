@@ -20,7 +20,9 @@ make
 
 **Parallel mergesort**
 
-The call to `parallel_mergesort::mergesort` in `mergesort.cpp` takes an integer that selects the parallel version:
+The call to `parallel_mergesort::mergesort` in `mergesort.cpp` takes 
+
+1. an integer that selects the parallel version:
 
 | Version | Description |
 |---------|-------------|
@@ -28,7 +30,9 @@ The call to `parallel_mergesort::mergesort` in `mergesort.cpp` takes an integer 
 | `2` | Fully parallel merge (higher overhead on small slices). |
 | `3` | Parallel merge with sequential fallbacks under tuned thresholds. |
 
-Edit the second argument in the `parallel_mergesort::mergesort(result, <version>)` call (line 40) to the intended version and run:
+2. a boolean that decides whether to use ping-pong buffer (false, by default), or copy to a temporary array each iteration (true)
+
+Edit the second argument in the `parallel_mergesort::mergesort(result, <version>, <alloc>)` call (line 40) to the intended version and run:
 
 ```bash
 make
